@@ -14,7 +14,7 @@ This project demonstrates:
 * Scratch org deployment
 * Salesforce DX unlocked packaging workflows
 
-
+---
 
 # Features
 
@@ -30,11 +30,11 @@ This project demonstrates:
 * Scratch-org deployable architecture
 * Unlocked package validation
 
-
+---
 
 # Architecture
 
-
+```text
 LWC (fraudRiskAnalyzer)
     ↓
 FraudRiskAnalyzerController
@@ -48,8 +48,9 @@ OpenAIHttpService
 HttpCalloutService
     ↓
 OpenAI API
+```
 
-
+---
 
 # Technologies Used
 
@@ -66,9 +67,11 @@ OpenAI API
 * Git / GitHub
 * Unlocked Packages
 
+---
 
 # Project Structure
 
+```text
 force-app/main/default/
 │
 ├── classes/
@@ -79,7 +82,9 @@ force-app/main/default/
 ├── tabs/
 ├── layouts/
 └── namedCredentials/
+```
 
+---
 
 # Main Components
 
@@ -97,6 +102,7 @@ force-app/main/default/
 | FraudAnalysisServiceTest        | Service test coverage           |
 | FraudRiskAnalyzerControllerTest | Controller test coverage        |
 
+---
 
 # Custom Objects
 
@@ -111,7 +117,7 @@ Stores:
 * recommended action
 * fraud review status
 
-
+---
 
 ## AI_Fraud_Analysis__c
 
@@ -124,7 +130,7 @@ Stores:
 * user feedback
 * audit/history tracking
 
-
+---
 
 # Screenshots
 
@@ -136,47 +142,35 @@ Shows:
 * AI Risk Level
 * AI Summary
 * Recommended Action
+
 <img width="1167" height="526" alt="image" src="https://github.com/user-attachments/assets/3df16be3-443b-44ee-9770-7ee62470a68a" />
 
+---
 
 ## AI Fraud Analysis Related Records
 
-Shows:
-
-* stored prompt
-* raw AI response
-* parsed recommendation
-* audit trail
 <img width="648" height="613" alt="image" src="https://github.com/user-attachments/assets/eac5c5b5-33f1-4a29-a405-f8fd8a8c8a1b" />
 
+---
 
 ## Apex Test Results
 
-Shows:
-
-* Queueable tests
-* controller/service tests
-* successful async testing
-
 <img width="582" height="640" alt="image" src="https://github.com/user-attachments/assets/1a33c638-590a-4424-b9f7-c48ec0c1ae32" />
 
+---
 
 ## Permission Set Configuration
 
-Shows:
-
-* Fraud Analyst Access
 <img width="1490" height="517" alt="image" src="https://github.com/user-attachments/assets/f4bf0271-b254-4790-80da-635434d37add" />
 <img width="1532" height="555" alt="image" src="https://github.com/user-attachments/assets/6b62cf4f-2cc2-4e8d-91c4-46fe368df465" />
 
+---
 
 ## Non-Admin User Access
 
-Shows:
-
-* Fraud Cases visibility for standard users
 <img width="1235" height="570" alt="image" src="https://github.com/user-attachments/assets/3c0d98a2-b576-461c-907b-ac8536565540" />
 
+---
 
 # Setup Instructions
 
@@ -210,6 +204,7 @@ sf org assign permset --name Fraud_Analyst_Access --target-org FraudScratch
 sf org open --target-org FraudScratch
 ```
 
+---
 
 # OpenAI Configuration
 
@@ -223,13 +218,14 @@ Create:
 
 * Label: OpenAI API
 * Name: OpenAI_API
-* URL: [https://api.openai.com](https://api.openai.com)
+* URL: https://api.openai.com
 
 Authentication:
 
 * Identity Type: Named Principal
 * Authentication Protocol: No Authentication
 
+---
 
 # API Key Configuration
 
@@ -242,6 +238,7 @@ In a production implementation, the API key should be stored securely using:
 * Salesforce Secret Manager
 * Protected Custom Metadata
 
+---
 
 # Post-Deployment Configuration
 
@@ -259,6 +256,7 @@ as:
 
 because FlexiPage assignments may not reliably carry across org deployments.
 
+---
 
 # Required Permissions
 
@@ -276,6 +274,7 @@ Users require:
 * Create
 * Edit
 
+---
 
 # Required Tab Visibility
 
@@ -283,11 +282,13 @@ Users need:
 
 * Fraud Cases tab visibility set to Visible
 
+---
 
 # Required App Access
 
 Non-admin users require access to the Sales app (or whichever app contains the Fraud Cases tab).
 
+---
 
 # Required Apex Class Access
 
@@ -300,6 +301,7 @@ The permission set includes access to:
 * HttpCalloutService
 * FraudAnalysisResult
 
+---
 
 # Running Tests
 
@@ -307,6 +309,7 @@ The permission set includes access to:
 sf apex run test --test-level RunLocalTests --target-org FraudScratch --result-format human --code-coverage --synchronous
 ```
 
+---
 
 # Test Coverage
 
@@ -314,6 +317,7 @@ sf apex run test --test-level RunLocalTests --target-org FraudScratch --result-f
 * Async queueable coverage included
 * Controller/service separation validated
 
+---
 
 # Packaging
 
@@ -325,7 +329,7 @@ This project was validated using Salesforce DX unlocked packaging through a Dev 
 sf package create --name FraudTriagePackage --package-type Unlocked --path force-app --target-dev-hub DevHub
 ```
 
-
+---
 
 ## Create Package Version
 
@@ -333,7 +337,7 @@ sf package create --name FraudTriagePackage --package-type Unlocked --path force
 sf package version create --package FraudTriagePackage --installation-key-bypass --wait 20 --target-dev-hub DevHub
 ```
 
-
+---
 
 ## Install Package
 
@@ -341,7 +345,7 @@ sf package version create --package FraudTriagePackage --installation-key-bypass
 sf package install --package YOUR_04T_PACKAGE_ID --target-org FraudScratch --wait 20 --publish-wait 10
 ```
 
-
+---
 
 # Validation Checklist
 
@@ -356,6 +360,7 @@ After deployment verify:
 * Queueable job executes successfully
 * Non-admin users can access functionality
 
+---
 
 # Demo Purpose
 
@@ -370,3 +375,5 @@ This project was built as a demonstration of:
 * permission-set-driven access management
 * Salesforce DX project structure
 * unlocked packaging workflows
+
+
