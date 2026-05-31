@@ -1,0 +1,20 @@
+{
+  "packageDirectories": [
+    {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "force-app",
+      "default": true,
+      "package": "FraudTriagePackage",
+      "versionDescription": ""
+    }
+  ],
+  "name": "ai-fraud-case-triage-agent",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "66.0",
+  "packageAliases": {
+    "FraudTriagePackage": "0Hog50000000jYDCAY",
+    "FraudTriagePackage@0.1.0-1": "04tg500000085QjAAI"
+  }
+}

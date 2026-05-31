@@ -1,0 +1,40 @@
+<template>
+    <lightning-card title="Fraud Risk Analyzer">
+        <div class="slds-p-around_medium">
+
+            <lightning-button
+                label="Analyze Fraud Risk"
+                variant="brand"
+                onclick={handleAnalyze}
+                disabled={isLoading}>
+            </lightning-button>
+
+            <template if:true={isLoading}>
+                <div class="slds-m-top_medium">
+                    <lightning-spinner alternative-text="Analyzing fraud risk"></lightning-spinner>
+                </div>
+            </template>
+
+            <template if:true={errorMessage}>
+                <div class="slds-m-top_medium slds-text-color_error">
+                    {errorMessage}
+                </div>
+            </template>
+
+            <template if:true={riskLevel}>
+                <div class="slds-m-top_medium">
+                    <p><strong>Risk Level:</strong> {riskLevel}</p>
+
+                    <p class="slds-m-top_small">
+                        <strong>Summary:</strong> {summary}
+                    </p>
+
+                    <p class="slds-m-top_small">
+                        <strong>Recommended Action:</strong> {recommendedAction}
+                    </p>
+                </div>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>
